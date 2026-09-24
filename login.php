@@ -121,7 +121,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Navbar -->
         <div id="navbar-container"></div>
 
-
         <!-- Login Page -->
         <main class="login-page">
 
