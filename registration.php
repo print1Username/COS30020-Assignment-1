@@ -1,11 +1,11 @@
 <?php
-session_start();
+    session_start();
 
-$errors = $_SESSION["registration_errors"] ?? [];
-$old = $_SESSION["registration_old"] ?? [];
+    $errors = $_SESSION["registration_errors"] ?? [];
+    $old = $_SESSION["registration_old"] ?? [];
 
-unset($_SESSION["registration_errors"]);
-unset($_SESSION["registration_old"]);
+    unset($_SESSION["registration_errors"]);
+    unset($_SESSION["registration_old"]);
 ?>
 
 <!DOCTYPE html>
