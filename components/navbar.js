@@ -45,7 +45,7 @@ const navbar = `
                     <!-- TODO: 修改 Catalogue hyperlink -->
                     <a
                         class="nav-link"
-                        href="#"
+                        href="catalog.php"
                     >
                         Catalogue
                     </a>
@@ -55,9 +55,9 @@ const navbar = `
                     <!-- TODO: 修改 Activity hyperlink -->
                     <a
                         class="nav-link"
-                        href="#"
+                        href="activities.php"
                     >
-                        Activity
+                        Activities
                     </a>
                 </li>
                 
@@ -65,7 +65,7 @@ const navbar = `
                     <!-- TODO: 修改 Activity hyperlink -->
                     <a
                         class="nav-link"
-                        href="#"
+                        href="community.php"
                     >
                         Community
                     </a>
@@ -96,7 +96,7 @@ const navbar = `
 
                 <!-- TODO: 修改 Sign Up hyperlink -->
                 <a
-                    href="#"
+                    href="registration.php"
                     class="btn btn-light btn-lg"
                 >
                     Sign Up
