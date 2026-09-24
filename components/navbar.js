@@ -96,7 +96,7 @@ const navbar = `
 
                 <!-- TODO: 修改 Sign Up hyperlink -->
                 <a
-                    href="#"
+                    href="registration.php"
                     class="btn btn-light btn-lg"
                 >
                     Sign Up

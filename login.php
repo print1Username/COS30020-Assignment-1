@@ -244,7 +244,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
                         <span>Doesn't have account?</span>
 
-                        <a href="#">
+                        <a href="registration.php">
                             Sign Up
                         </a>
 
