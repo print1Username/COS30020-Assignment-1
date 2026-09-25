@@ -42,6 +42,7 @@
 
 .custom-navbar .nav-link {
     position: relative;
+    display: inline-block;
 
     color: rgba(255, 255, 255, 0.8);
 
@@ -74,8 +75,8 @@
 
     position: absolute;
 
-    left: 0.75rem;
-    right: 0.75rem;
+    left: 1rem;
+    right: 1rem;
     bottom: 0.1rem;
 
     height: 2px;
@@ -186,7 +187,9 @@
 
 
 /*
- * Mobile layout
+ * ==========================
+ * Mobile Navbar
+ * ==========================
  */
 
 @media (max-width: 991.98px) {
@@ -196,15 +199,32 @@
         padding-bottom: 0.75rem;
     }
 
+    /*
+     * Make the nav link width follow
+     * the text content.
+     */
     .custom-navbar .nav-link {
+        position: relative;
+
+        display: inline-block;
+
         padding-top: 0.65rem;
         padding-bottom: 0.65rem;
+
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 
+    /*
+     * Underline follows the width
+     * of each navigation link.
+     */
     .custom-navbar .nav-link::after {
-        left: 0;
-        right: auto;
-        width: 50px;
+        left: 1rem;
+        right: 1rem;
+
+        width: auto;
+
         bottom: 0.35rem;
     }
 
