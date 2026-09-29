@@ -65,9 +65,6 @@ session_start();
                 </li>
             </ul>
 
-
-
-
             <p class="py-4">
                 <a href="index.php" class="p-2">Go Back to Home</a>
             </p>

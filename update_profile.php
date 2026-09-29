@@ -271,6 +271,8 @@ if ($profileImage !== "") {
 <body>
     <div id="navbar-container"></div>
 
+    <?php include "navbar.php"; ?>
+
     <main class="profile-page container py-5">
         <div class="profile-page-heading">
             <h1>Update Profile</h1>
@@ -484,7 +486,6 @@ if ($profileImage !== "") {
         </div>
     </div>
 
-    <script src="components/navbar.js"></script>
     <script src="components/profile_crop.js"></script>
 </body>
 </html>
