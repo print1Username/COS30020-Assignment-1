@@ -1,12 +1,15 @@
+/*
+ * Navbar Component
+ * Handles navigation display, active page detection,
+ * and login/account button display.
+ */
+
 const navbar = `
 <nav class="navbar navbar-expand-lg navbar-dark custom-navbar">
     <div class="container p-2">
+
         <!-- Brand -->
-        <!-- TODO: 修改网站 Logo / Brand hyperlink -->
-        <a
-            class="navbar-brand fw-bold fs-4"
-            href="index.php"
-        >
+        <a class="navbar-brand fw-bold fs-4" href="index.php">
             COS30020
         </a>
 
@@ -24,84 +27,43 @@ const navbar = `
         </button>
 
         <!-- Navigation -->
-        <div
-            class="collapse navbar-collapse"
-            id="mainNavbar"
-        >
+        <div class="collapse navbar-collapse" id="mainNavbar">
 
             <!-- Left Navigation -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a
-                        class="nav-link"
-                        aria-current="page"
-                        href="main_menu.php"
-                    >
+                    <a class="nav-link" href="main_menu.php">
                         Main menu
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <!-- TODO: 修改 Catalogue hyperlink -->
-                    <a
-                        class="nav-link"
-                        href="catalog.php"
-                    >
+                    <a class="nav-link" href="catalog.php">
                         Catalogue
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <!-- TODO: 修改 Activity hyperlink -->
-                    <a
-                        class="nav-link"
-                        href="activities.php"
-                    >
+                    <a class="nav-link" href="activities.php">
                         Activities
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
-                    <!-- TODO: 修改 Activity hyperlink -->
-                    <a
-                        class="nav-link"
-                        href="community.php"
-                    >
+                    <a class="nav-link" href="community.php">
                         Community
                     </a>
                 </li>
-                
+
                 <li class="nav-item">
-                    <!-- TODO: 修改 Activity hyperlink -->
-                    <a
-                        class="nav-link"
-                        href="about.php"
-                    >
+                    <a class="nav-link" href="about.php">
                         About
                     </a>
                 </li>
-
             </ul>
 
-            <!-- Authentication Buttons -->
-            <div class="d-flex gap-3">
-
-                <!-- TODO: 修改 Login hyperlink -->
-                <a
-                    href="login.php"
-                    class="btn btn-dark btn-lg custom-login-button"
-                >
-                    Login
-                </a>
-
-                <!-- TODO: 修改 Sign Up hyperlink -->
-                <a
-                    href="registration.php"
-                    class="btn btn-light btn-lg"
-                >
-                    Sign Up
-                </a>
-
+            <!-- Authentication -->
+            <div class="d-flex gap-3 align-items-center" id="navbar-auth">
             </div>
 
         </div>
@@ -109,40 +71,78 @@ const navbar = `
 </nav>
 `;
 
-
 document.addEventListener("DOMContentLoaded", () => {
     const navbarContainer = document.getElementById("navbar-container");
 
     if (!navbarContainer) {
-        console.error( "Navbar container #navbar-container was not found." );
+        console.error("Navbar container #navbar-container was not found.");
         return;
     }
 
-    /* * Insert Navbar */
+    // Insert Navbar
     navbarContainer.innerHTML = navbar;
 
-    /* * ========================================== * Automatically detect current page * ========================================== */
-    const currentPage = window.location.pathname.split("/").pop() || "index.php";
+    /*
+     * Automatically detect the current page
+     * and apply Bootstrap's active state.
+     */
+    const currentPage =
+        window.location.pathname.split("/").pop() || "index.php";
 
-    /* * Find all navigation links */
     const navLinks = navbarContainer.querySelectorAll(".nav-link");
 
-    /* * Compare href with current page */
     navLinks.forEach((link) => {
         const href = link.getAttribute("href");
+
         if (!href) {
             return;
         }
 
-        /* * Get filename from href * * Example: * catalogue.php → catalogue.php * activity.php → activity.php */
-        const linkPage = href.split("/").pop().split("?")[0].split("#")[0];
+        const linkPage = href
+            .split("/")
+            .pop()
+            .split("?")[0]
+            .split("#")[0];
 
         if (linkPage === currentPage) {
             link.classList.add("active");
             link.setAttribute("aria-current", "page");
-        } else {
-            link.classList.remove("active");
-            link.removeAttribute("aria-current");
         }
     });
+
+    /*
+     * Display authentication buttons based on PHP Session.
+     */
+    const authContainer = document.getElementById("navbar-auth");
+
+    if (window.isLoggedIn === true) {
+        // Logged in: show Account button
+        authContainer.innerHTML = `
+            <a
+                href="profile.php"
+                class="btn btn-dark btn-lg custom-login-button d-flex align-items-center gap-2"
+                aria-label="View Account Profile"
+            >
+                <i class="bi bi-person-circle"></i>
+                <span>Account</span>
+            </a>
+        `;
+    } else {
+        // Logged out: show Login and Sign Up buttons
+        authContainer.innerHTML = `
+            <a
+                href="login.php"
+                class="btn btn-dark btn-lg custom-login-button"
+            >
+                Login
+            </a>
+
+            <a
+                href="registration.php"
+                class="btn btn-light btn-lg"
+            >
+                Sign Up
+            </a>
+        `;
+    }
 });

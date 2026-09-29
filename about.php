@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,11 +22,18 @@
             rel="stylesheet"
             href="style/navbar.css"
         >
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        >
     </head>
 
     <body>
         <!-- Navbar will be inserted here -->
         <div id="navbar-container"></div>
+
+        <?php include "navbar.php"; ?>
 
         <!-- Your page content -->
         <main class="container py-5">
@@ -68,9 +79,6 @@
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"
         ></script>
-
-        <!-- Compiled Navbar JavaScript -->
-        <script src="components/navbar.js"></script>
     </body>
 
 

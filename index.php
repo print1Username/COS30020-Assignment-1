@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -18,11 +22,19 @@
             rel="stylesheet"
             href="style/navbar.css"
         >
+
+        <!-- Bootstrap Icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+        >
     </head>
 
     <body>
         <!-- Navbar will be inserted here -->
         <div id="navbar-container"></div>
+
+        <?php include "navbar.php"; ?>
 
         <!-- Your page content -->
         <main class="container py-5">
@@ -37,8 +49,15 @@
             crossorigin="anonymous"
         ></script>
 
-        <!-- Compiled Navbar JavaScript -->
-        <script src="components/navbar.js"></script>
+        <!-- Pass PHP Session Login Status to JavaScript -->
+        <script>
+            window.isLoggedIn = <?php
+                echo (
+                    isset($_SESSION["logged_in"]) &&
+                    $_SESSION["logged_in"] === true
+                ) ? "true" : "false";
+            ?>;
+        </script>
     </body>
 
 </html>

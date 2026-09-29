@@ -127,6 +127,8 @@ if ($profileImage !== "") {
 <body>
     <div id="navbar-container"></div>
 
+    <?php include "navbar.php"; ?>
+
     <main class="profile-page container py-5">
         <div class="profile-page-heading">
             <h1>Profile</h1>
@@ -236,7 +238,5 @@ if ($profileImage !== "") {
             </section>
         </div>
     </main>
-
-    <script src="components/navbar.js"></script>
 </body>
 </html>
