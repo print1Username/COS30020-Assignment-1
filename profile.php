@@ -1,6 +1,17 @@
 <?php
 session_start();
 
+/*
+ * Handle logout
+ */
+if (isset($_GET["logout"])) {
+    session_unset();
+    session_destroy();
+
+    header("Location: login.php");
+    exit;
+}
+
 if (
     !isset($_SESSION["logged_in"]) ||
     $_SESSION["logged_in"] !== true ||
@@ -136,42 +147,54 @@ if ($profileImage !== "") {
         </div>
 
         <div class="profile-layout">
-            <section class="profile-card">
-                <div class="profile-picture-container">
-                    <?php if ($profileImagePath !== ""): ?>
-                        <img
-                            src="<?php echo htmlspecialchars($profileImagePath); ?>"
-                            alt="Profile picture"
-                            class="profile-picture"
-                        >
-                    <?php else: ?>
-                        <div
-                            class="profile-picture profile-picture-default"
-                            aria-label="Default profile picture"
-                        >
-                            <i class="bi bi-person-fill"></i>
-                        </div>
-                    <?php endif; ?>
-                </div>
+            <div class="profile-left-column">
+                <section class="profile-card">
+                    <div class="profile-picture-container">
+                        <?php if ($profileImagePath !== ""): ?>
+                            <img
+                                src="<?php echo htmlspecialchars($profileImagePath); ?>"
+                                alt="Profile picture"
+                                class="profile-picture"
+                            >
+                        <?php else: ?>
+                            <div
+                                class="profile-picture profile-picture-default"
+                                aria-label="Default profile picture"
+                            >
+                                <i class="bi bi-person-fill"></i>
+                            </div>
+                        <?php endif; ?>
+                    </div>
 
-                <div class="profile-picture-actions">
-                    <a
-                        href="update_profile.php"
-                        class="btn profile-upload-button"
-                    >
-                        <i class="bi bi-upload me-2"></i>
-                        Upload Profile
-                    </a>
+                    <div class="profile-picture-actions">
+                        <a
+                            href="update_profile.php"
+                            class="btn profile-upload-button"
+                        >
+                            <i class="bi bi-upload me-2"></i>
+                            Upload Profile
+                        </a>
 
+                        <a
+                            href="update_profile.php"
+                            class="btn profile-camera-button"
+                        >
+                            <i class="bi bi-camera me-2"></i>
+                            Take from Camera
+                        </a>
+                    </div>
+                </section>
+
+                <div class="profile-logout">
                     <a
-                        href="update_profile.php"
-                        class="btn profile-camera-button"
+                        href="profile.php?logout=1"
+                        class="btn profile-logout-button"
                     >
-                        <i class="bi bi-camera me-2"></i>
-                        Take from Camera
+                        <i class="bi bi-box-arrow-right me-2"></i>
+                        Logout
                     </a>
                 </div>
-            </section>
+            </div>
 
             <section class="profile-information">
                 <div class="profile-actions">
