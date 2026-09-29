@@ -73,16 +73,8 @@ session_start();
                         <a href="main_menu.php" class="btn btn-primary btn-lg">
                             Explore Board Games
                         </a>
-
-                        <a href="registration.php"
-                           class="btn btn-outline-primary btn-lg">
-                            Sign Up
-                        </a>
-
                     </div>
-
                 </div>
-
             </section>
 
 
