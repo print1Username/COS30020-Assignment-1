@@ -80,14 +80,13 @@ session_start();
 
             <!-- Random Image -->
             <section class="index-image-section">
-
                 <div class="index-image-wrapper">
-
-                    <img
-                        src="img/boardgame-<?php echo rand(1, 5); ?>.jpg"
-                        alt="Board game session at Boardgame Hub"
-                        class="index-random-image"
-                    >
+                <img
+                    src="img/boardgame-1.jpg"
+                    alt="Board game session at Boardgame Hub"
+                    class="index-random-image"
+                    id="boardgame-slideshow"
+                >
 
                 </div>
 
@@ -300,6 +299,21 @@ session_start();
                     $_SESSION["logged_in"] === true
                 ) ? "true" : "false";
             ?>;
+
+            let currentImage = 1;
+            const totalImages = 10;
+
+            setInterval(function () {
+                currentImage++;
+
+                if (currentImage > totalImages) {
+                    currentImage = 1;
+                }
+
+                document.getElementById("boardgame-slideshow").src =
+                    "img/boardgame-" + currentImage + ".jpg";
+
+            }, 5000);
         </script>
     </body>
 
