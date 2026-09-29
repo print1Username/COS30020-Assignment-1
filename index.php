@@ -301,7 +301,7 @@ session_start();
             ?>;
 
             let currentImage = 1;
-            const totalImages = 10;
+            const totalImages = 5;
 
             setInterval(function () {
                 currentImage++;
