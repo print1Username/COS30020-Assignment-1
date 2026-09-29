@@ -910,3 +910,19 @@
     color: #ffffff;
     box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
 }
+
+.profile-edit-field-row {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+}
+
+.profile-edit-field {
+    flex: 1;
+    padding-block: 10px;
+}
+
+.profile-edit-field label {
+    display: block;
+    margin-bottom: 6px;
+}
