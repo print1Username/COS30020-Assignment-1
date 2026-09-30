@@ -93,8 +93,8 @@ $registerLink = $isLoggedIn ? "activity_reg.php" : "login.php?message=login_requ
                 >
                     <?php foreach ($activities as $activity): ?>
                         <?php
-                        $image = isset($activity["image"]) ? $activity["image"] : null;
-                        $hasImage = !empty($image);
+                            $image = isset($activity["image"]) ? $activity["image"] : null;
+                            $hasImage = !empty($image) && file_exists($image);
                         ?>
 
                         <article
