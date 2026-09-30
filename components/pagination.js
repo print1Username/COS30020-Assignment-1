@@ -31,7 +31,6 @@ function createPagination(options) {
 
         paginationElement.parentElement.hidden = false;
 
-        // Previous button
         const previousItem = document.createElement("li");
         previousItem.className = "page-item";
 
@@ -56,7 +55,6 @@ function createPagination(options) {
         previousItem.appendChild(previousButton);
         paginationElement.appendChild(previousItem);
 
-        // Page numbers
         for (let page = 1; page <= totalPages; page++) {
             const pageItem = document.createElement("li");
             pageItem.className = "page-item";
@@ -76,16 +74,17 @@ function createPagination(options) {
             }
 
             pageButton.addEventListener("click", function () {
-                currentPage = page;
-                renderItems();
-                scrollToTop();
+                if (currentPage !== page) {
+                    currentPage = page;
+                    renderItems();
+                    scrollToTop();
+                }
             });
 
             pageItem.appendChild(pageButton);
             paginationElement.appendChild(pageItem);
         }
 
-        // Next button
         const nextItem = document.createElement("li");
         nextItem.className = "page-item";
 
@@ -112,14 +111,10 @@ function createPagination(options) {
     }
 
     function scrollToTop() {
-        const grid = document.getElementById("catalog-game-grid");
-
-        if (grid) {
-            grid.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-            });
-        }
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
     }
 
     return {

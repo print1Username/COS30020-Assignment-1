@@ -54,6 +54,8 @@ $categories = [
 
     <!-- Catalogue CSS -->
     <link rel="stylesheet" href="style/catalog.css">
+    <link rel="stylesheet" href="style/pagination.css">
+
 </head>
 <body>
 
