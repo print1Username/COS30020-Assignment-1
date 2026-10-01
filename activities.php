@@ -72,7 +72,7 @@ $registerLink = $isLoggedIn ? "activity_reg.php" : "login.php?message=login_requ
 
                 <div class="activities-header-action">
                     <a
-                        href="<?php echo htmlspecialchars($registerLink); ?>"
+                        href="#"
                         class="btn activities-register-btn"
                     >
                         <i class="bi bi-calendar-plus me-2"></i>
@@ -101,11 +101,21 @@ $registerLink = $isLoggedIn ? "activity_reg.php" : "login.php?message=login_requ
                             class="activity-card"
                             hidden
                         >
-                            <a
-                                href="#"
-                                class="activity-card-link"
-                                aria-label="View details for <?php echo htmlspecialchars($activity["title"]); ?>"
-                            >
+                        <?php
+                        $activityId = isset($activity["id"]) ? (int) $activity["id"] : 0;
+
+                        if ($isLoggedIn) {
+                            $activityRegisterLink = "activity_reg.php?id=" . $activityId;
+                        } else {
+                            $activityRegisterLink = "login.php?message=login_required";
+                        }
+                        ?>
+
+                        <a
+                            href="<?php echo htmlspecialchars($activityRegisterLink); ?>"
+                            class="activity-card-link"
+                            aria-label="Register for <?php echo htmlspecialchars($activity["title"]); ?>"
+                        >
                                 <div class="activity-card-image">
                                     <?php if ($hasImage): ?>
                                         <img
@@ -215,9 +225,8 @@ $registerLink = $isLoggedIn ? "activity_reg.php" : "login.php?message=login_requ
                                     <i class="bi bi-people-fill me-1"></i>
                                     Join the Boardgame Hub community
                                 </span>
-
                                 <a
-                                    href="<?php echo htmlspecialchars($registerLink); ?>"
+                                    href="<?php echo htmlspecialchars($activityRegisterLink); ?>"
                                     class="btn activity-register-card-btn"
                                 >
                                     <i class="bi bi-calendar-check me-2"></i>
