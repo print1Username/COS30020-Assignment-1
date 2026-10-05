@@ -1,5 +1,8 @@
 <?php
 session_start();
+
+$isLoggedIn = isset($_SESSION["logged_in"]) && $_SESSION["logged_in"] === true;
+$loginTarget = $isLoggedIn ? "profile.php" : "login.php";
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +10,7 @@ session_start();
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Main Menu</title>
+        <title>Welcome to Boardgame Hub</title>
 
         <!-- Bootstrap 5.3.8 -->
         <link
@@ -17,29 +20,160 @@ session_start();
             crossorigin="anonymous"
         >
 
-        <!-- Custom Navbar CSS -->
-        <link
-            rel="stylesheet"
-            href="style/navbar.css"
-        >
-
         <!-- Bootstrap Icons -->
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
         >
+
+        <!-- Navbar CSS -->
+        <link
+            rel="stylesheet"
+            href="style/navbar.css"
+        >
+
+        <!-- Main Menu CSS -->
+        <link
+            rel="stylesheet"
+            href="style/main_menu.css"
+        >
     </head>
 
     <body>
-        <!-- Navbar will be inserted here -->
-        <div id="navbar-container"></div>
-
+        <!-- Navbar -->
         <?php include "navbar.php"; ?>
 
-        <!-- Your page content -->
-        <main class="container py-5">
-            <h1>Main Menu</h1>
-            <p>This is my website homepage.</p>
+        <main>
+            <!-- Hero Section -->
+            <section class="main-menu-hero">
+                <div class="container">
+                    <div class="main-menu-hero-content">
+                        <span class="main-menu-eyebrow">BOARDGAME HUB</span>
+                        <h1>Welcome to Boardgame Hub</h1>
+                        <p>
+                            Discover board games, join activities, connect with
+                            the community, and enjoy your next game session.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Main Menu Cards -->
+            <section class="main-menu-section">
+                <div class="container">
+                    <div class="main-menu-grid">
+                        <!-- Catalogue Card -->
+                        <article class="main-menu-card">
+                            <div class="main-menu-card-icon">
+                                <i class="bi bi-grid-3x3-gap-fill"></i>
+                            </div>
+                            <div class="main-menu-card-content">
+                                <h2>Catalogue</h2>
+                                <p>
+                                    Explore our collection of board games and
+                                    discover something new to play.
+                                </p>
+                                <a
+                                    href="catalog.php"
+                                    class="btn main-menu-card-button"
+                                >
+                                    View Catalogue
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Activities Card -->
+                        <article class="main-menu-card">
+                            <div class="main-menu-card-icon">
+                                <i class="bi bi-calendar-event-fill"></i>
+                            </div>
+                            <div class="main-menu-card-content">
+                                <h2>Activities</h2>
+                                <p>
+                                    Find upcoming board game activities,
+                                    sessions, and events you can join.
+                                </p>
+                                <a
+                                    href="activities.php"
+                                    class="btn main-menu-card-button"
+                                >
+                                    View Activities
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- Community Card -->
+                        <article class="main-menu-card">
+                            <div class="main-menu-card-icon">
+                                <i class="bi bi-people-fill"></i>
+                            </div>
+                            <div class="main-menu-card-content">
+                                <h2>Community</h2>
+                                <p>
+                                    Explore contributions and see what other
+                                    board game players are sharing.
+                                </p>
+                                <a
+                                    href="community.php"
+                                    class="btn main-menu-card-button"
+                                >
+                                    View Community
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+
+                        <!-- About Card -->
+                        <article class="main-menu-card">
+                            <div class="main-menu-card-icon">
+                                <i class="bi bi-info-circle-fill"></i>
+                            </div>
+                            <div class="main-menu-card-content">
+                                <h2>About</h2>
+                                <p>
+                                    Learn more about Boardgame Hub, its purpose,
+                                    features, and project information.
+                                </p>
+                                <a
+                                    href="about.php"
+                                    class="btn main-menu-card-button"
+                                >
+                                    Learn More
+                                    <i class="bi bi-arrow-right"></i>
+                                </a>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Login Section -->
+            <section class="main-menu-login-section">
+                <div class="container">
+                    <div class="main-menu-login-card">
+                        <div class="main-menu-login-content">
+                            <i class="bi bi-person-circle"></i>
+                            <div>
+                                <h2>Ready to get started?</h2>
+                                <p>
+                                    Log in to access your profile and manage
+                                    your Boardgame Hub activities.
+                                </p>
+                            </div>
+                        </div>
+
+                        <a
+                            href="<?php echo $loginTarget; ?>"
+                            class="btn main-menu-login-button"
+                        >
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Login
+                        </a>
+                    </div>
+                </div>
+            </section>
         </main>
 
         <!-- Bootstrap JavaScript -->
@@ -48,6 +182,8 @@ session_start();
             integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
             crossorigin="anonymous"
         ></script>
-    </body>
 
+        <!-- Main Menu JavaScript -->
+        <script src="components/main_menu.js"></script>
+    </body>
 </html>

@@ -132,14 +132,14 @@ document.addEventListener("DOMContentLoaded", () => {
         authContainer.innerHTML = `
             <a
                 href="login.php"
-                class="btn btn-dark btn-lg custom-login-button"
+                class="btn btn-dark btn-lg custom-login-button navbar-auth-button"
             >
                 Login
             </a>
 
             <a
                 href="registration.php"
-                class="btn btn-light btn-lg"
+                class="btn btn-light btn-lg navbar-auth-button"
             >
                 Sign Up
             </a>
