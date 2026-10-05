@@ -297,15 +297,15 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $selectedActivity !== null) {
 			 */
 
 			$registrationRecord =
-				"Activity ID: " . $activityId .
-				"|First Name: " . $firstName .
-				"|Last Name: " . $lastName .
-				"|Contact Number: " . $contactNumber .
-				"|Email: " . $email .
-				"|Activity Date: " . $activityDate .
-				"|Activity Start Time: " . $activityStartTime .
-				"|Activity End Time: " . $activityEndTime .
-				"|Activity Title: " . $activityTitle .
+				"Activity ID: ".$activityId.
+				"|First Name: ".$firstName.
+				"|Last Name: ".$lastName.
+				"|Contact Number: ".$contactNumber.
+				"|Email: ".$email.
+				"|Activity Date: ".$activityDate.
+				"|Activity Start Time: ".$activityStartTime.
+				"|Activity End Time: ".$activityEndTime.
+				"|Activity Title: ".$activityTitle.
 				PHP_EOL;
 
 			/*
@@ -322,8 +322,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $selectedActivity !== null) {
 				$error = "Unable to save your registration. Please try again.";
 			} else {
 				$_SESSION["activity_registration_success"] =
-					"You have successfully registered for " .
-					$activityTitle . ".";
+					"You have successfully registered for ".
+					$activityTitle.".";
 
 				header("Location: activities.php");
 				exit;
@@ -485,8 +485,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && $selectedActivity !== null) {
 										date(
 											"g:i A",
 											strtotime($activityStartTime)
-										) .
-										" - " .
+										).
+										" - ".
 										date(
 											"g:i A",
 											strtotime($activityEndTime)

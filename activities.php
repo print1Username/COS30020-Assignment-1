@@ -105,7 +105,7 @@ $registerLink = $isLoggedIn ? "activity_reg.php" : "login.php?message=login_requ
 						$activityId = isset($activity["id"]) ? (int)$activity["id"] : 0;
 
 						if ($isLoggedIn) {
-							$activityRegisterLink = "activity_reg.php?id=" . $activityId;
+							$activityRegisterLink = "activity_reg.php?id=".$activityId;
 						} else {
 							$activityRegisterLink = "login.php?message=login_required";
 						}

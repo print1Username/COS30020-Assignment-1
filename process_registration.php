@@ -11,8 +11,8 @@ $errors = [];
 */
 
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
-    header("Location: registration.php");
-    exit;
+	header("Location: registration.php");
+	exit;
 }
 
 
@@ -39,12 +39,12 @@ $confirmPassword = $_POST["confirm_password"] ?? "";
 */
 
 $_SESSION["registration_old"] = [
-    "first_name" => $firstName,
-    "last_name" => $lastName,
-    "dob" => $dob,
-    "gender" => $gender,
-    "email" => $email,
-    "hometown" => $hometown
+	"first_name" => $firstName,
+	"last_name" => $lastName,
+	"dob" => $dob,
+	"gender" => $gender,
+	"email" => $email,
+	"hometown" => $hometown
 ];
 
 
@@ -55,35 +55,35 @@ $_SESSION["registration_old"] = [
 */
 
 if ($firstName === "") {
-    $errors[] = "First Name is required.";
+	$errors[] = "First Name is required.";
 }
 
 if ($lastName === "") {
-    $errors[] = "Last Name is required.";
+	$errors[] = "Last Name is required.";
 }
 
 if ($dob === "") {
-    $errors[] = "Date of Birth is required.";
+	$errors[] = "Date of Birth is required.";
 }
 
 if ($gender === "") {
-    $errors[] = "Gender is required.";
+	$errors[] = "Gender is required.";
 }
 
 if ($email === "") {
-    $errors[] = "Email is required.";
+	$errors[] = "Email is required.";
 }
 
 if ($hometown === "") {
-    $errors[] = "Hometown is required.";
+	$errors[] = "Hometown is required.";
 }
 
 if ($password === "") {
-    $errors[] = "Password is required.";
+	$errors[] = "Password is required.";
 }
 
 if ($confirmPassword === "") {
-    $errors[] = "Confirm Password is required.";
+	$errors[] = "Confirm Password is required.";
 }
 
 
@@ -95,7 +95,7 @@ if ($confirmPassword === "") {
 */
 
 if ($firstName !== "" && !preg_match("/^[a-zA-Z ]+$/", $firstName)) {
-    $errors[] = "First Name can only contain letters and spaces.";
+	$errors[] = "First Name can only contain letters and spaces.";
 }
 
 
@@ -106,7 +106,7 @@ if ($firstName !== "" && !preg_match("/^[a-zA-Z ]+$/", $firstName)) {
 */
 
 if ($lastName !== "" && !preg_match("/^[a-zA-Z ]+$/", $lastName)) {
-    $errors[] = "Last Name can only contain letters and spaces.";
+	$errors[] = "Last Name can only contain letters and spaces.";
 }
 
 
@@ -117,7 +117,7 @@ if ($lastName !== "" && !preg_match("/^[a-zA-Z ]+$/", $lastName)) {
 */
 
 if ($email !== "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    $errors[] = "Please enter a valid email address.";
+	$errors[] = "Please enter a valid email address.";
 }
 
 
@@ -128,7 +128,7 @@ if ($email !== "" && !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 */
 
 if ($gender !== "" && $gender !== "Male" && $gender !== "Female") {
-    $errors[] = "Invalid gender selected.";
+	$errors[] = "Invalid gender selected.";
 }
 
 
@@ -140,17 +140,17 @@ if ($gender !== "" && $gender !== "Male" && $gender !== "Female") {
 
 if ($dob !== "") {
 
-    $date = DateTime::createFromFormat("Y-m-d", $dob);
+	$date = DateTime::createFromFormat("Y-m-d", $dob);
 
-    $dateErrors = DateTime::getLastErrors();
+	$dateErrors = DateTime::getLastErrors();
 
-    if (
-        !$date ||
-        ($dateErrors !== false &&
-        ($dateErrors["warning_count"] > 0 || $dateErrors["error_count"] > 0))
-    ) {
-        $errors[] = "Please enter a valid Date of Birth.";
-    }
+	if (
+		!$date ||
+		($dateErrors !== false &&
+			($dateErrors["warning_count"] > 0 || $dateErrors["error_count"] > 0))
+	) {
+		$errors[] = "Please enter a valid Date of Birth.";
+	}
 }
 
 
@@ -162,17 +162,17 @@ if ($dob !== "") {
 
 if ($password !== "") {
 
-    if (strlen($password) < 8) {
-        $errors[] = "Password must be at least 8 characters long.";
-    }
+	if (strlen($password) < 8) {
+		$errors[] = "Password must be at least 8 characters long.";
+	}
 
-    if (!preg_match("/[0-9]/", $password)) {
-        $errors[] = "Password must contain at least one number.";
-    }
+	if (!preg_match("/[0-9]/", $password)) {
+		$errors[] = "Password must contain at least one number.";
+	}
 
-    if (!preg_match("/[^a-zA-Z0-9]/", $password)) {
-        $errors[] = "Password must contain at least one symbol.";
-    }
+	if (!preg_match("/[^a-zA-Z0-9]/", $password)) {
+		$errors[] = "Password must contain at least one symbol.";
+	}
 }
 
 
@@ -183,11 +183,11 @@ if ($password !== "") {
 */
 
 if (
-    $password !== "" &&
-    $confirmPassword !== "" &&
-    $password !== $confirmPassword
+	$password !== "" &&
+	$confirmPassword !== "" &&
+	$password !== $confirmPassword
 ) {
-    $errors[] = "Password and Confirm Password do not match.";
+	$errors[] = "Password and Confirm Password do not match.";
 }
 
 
@@ -199,10 +199,10 @@ if (
 
 if (!empty($errors)) {
 
-    $_SESSION["registration_errors"] = $errors;
+	$_SESSION["registration_errors"] = $errors;
 
-    header("Location: registration.php");
-    exit;
+	header("Location: registration.php");
+	exit;
 }
 
 
@@ -213,19 +213,19 @@ if (!empty($errors)) {
 */
 
 $userDirectory = "data/User";
-$userFile = $userDirectory . "/user.txt";
+$userFile = $userDirectory."/user.txt";
 
 if (!is_dir($userDirectory)) {
 
-    if (!mkdir($userDirectory, 0777, true)) {
+	if (!mkdir($userDirectory, 0777, true)) {
 
-        $_SESSION["registration_errors"] = [
-            "Unable to create the user data directory."
-        ];
+		$_SESSION["registration_errors"] = [
+			"Unable to create the user data directory."
+		];
 
-        header("Location: registration.php");
-        exit;
-    }
+		header("Location: registration.php");
+		exit;
+	}
 }
 
 
@@ -237,37 +237,37 @@ if (!is_dir($userDirectory)) {
 
 if (file_exists($userFile)) {
 
-    $users = file(
-        $userFile,
-        FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
-    );
+	$users = file(
+		$userFile,
+		FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES
+	);
 
-    foreach ($users as $user) {
+	foreach ($users as $user) {
 
-        $fields = explode("|", $user);
+		$fields = explode("|", $user);
 
-        foreach ($fields as $field) {
+		foreach ($fields as $field) {
 
-            $parts = explode(":", $field, 2);
+			$parts = explode(":", $field, 2);
 
-            if (count($parts) !== 2) {
-                continue;
-            }
+			if (count($parts) !== 2) {
+				continue;
+			}
 
-            $fieldName = trim($parts[0]);
-            $fieldValue = trim($parts[1]);
+			$fieldName = trim($parts[0]);
+			$fieldValue = trim($parts[1]);
 
-            if (
-                $fieldName === "Email" &&
-                strcasecmp($fieldValue, $email) === 0
-            ) {
+			if (
+				$fieldName === "Email" &&
+				strcasecmp($fieldValue, $email) === 0
+			) {
 
-                $errors[] = "This email address is already registered.";
+				$errors[] = "This email address is already registered.";
 
-                break 2;
-            }
-        }
-    }
+				break 2;
+			}
+		}
+	}
 }
 
 
@@ -279,10 +279,10 @@ if (file_exists($userFile)) {
 
 if (!empty($errors)) {
 
-    $_SESSION["registration_errors"] = $errors;
+	$_SESSION["registration_errors"] = $errors;
 
-    header("Location: registration.php");
-    exit;
+	header("Location: registration.php");
+	exit;
 }
 
 
@@ -295,7 +295,7 @@ if (!empty($errors)) {
 */
 
 $dateObject = DateTime::createFromFormat("Y-m-d", $dob);
-$formattedDob = $dateObject->format("d-m-Y");
+$formattedDob = $dateObject -> format("d-m-Y");
 
 
 /*
@@ -305,13 +305,13 @@ $formattedDob = $dateObject->format("d-m-Y");
 */
 
 $userRecord =
-    "First Name: " . $firstName .
-    "|LastName: " . $lastName .
-    "|DOB:" . $formattedDob .
-    "|Gender: " . $gender .
-    "|Email: " . $email .
-    "|Hometown:" . $hometown .
-    "|Password:" . $password;
+	"First Name: ".$firstName.
+	"|LastName: ".$lastName.
+	"|DOB:".$formattedDob.
+	"|Gender: ".$gender.
+	"|Email: ".$email.
+	"|Hometown:".$hometown.
+	"|Password:".$password;
 
 
 /*
@@ -324,15 +324,15 @@ $fileHandle = fopen($userFile, "a");
 
 if ($fileHandle === false) {
 
-    $_SESSION["registration_errors"] = [
-        "Unable to save your registration. Please try again."
-    ];
+	$_SESSION["registration_errors"] = [
+		"Unable to save your registration. Please try again."
+	];
 
-    header("Location: registration.php");
-    exit;
+	header("Location: registration.php");
+	exit;
 }
 
-fwrite($fileHandle, $userRecord . PHP_EOL);
+fwrite($fileHandle, $userRecord.PHP_EOL);
 
 fclose($fileHandle);
 

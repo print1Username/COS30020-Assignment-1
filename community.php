@@ -45,7 +45,7 @@ if (!in_array($sortOrder, $allowedSortOrders, true)) {
  * ==========================
  */
 
-usort($communities, function ($a, $b) use ($sortType, $sortOrder) {
+usort($communities, function($a, $b) use ($sortType, $sortOrder) {
 	if ($sortType === "alphabetical") {
 		$result = strcasecmp(
 			$a["title"] ?? "",
