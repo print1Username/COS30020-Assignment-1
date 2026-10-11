@@ -101,14 +101,14 @@
 				<div class="about-video-card">
 					<div class="ratio ratio-16x9">
 						<iframe
-							src="https://www.youtube.com/embed/yPYZpwSpKmA?si=xzmUWQEmYrqL8Sjs"
+							src="https://www.youtube.com/embed/eAg9tXyo378?si=4XxJ37dO7751WhBq"
 							title="Boardgame Hub video presentation"
 							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 							referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
 						></iframe>
 					</div>
 					<a
-						href="https://www.youtube.com/watch?v=yPYZpwSpKmA" class="btn about-video-link" target="_blank"
+						href="https://www.youtube.com/watch?v=eAg9tXyo378" class="btn about-video-link" target="_blank"
 						rel="noopener noreferrer"
 					><i class="bi bi-youtube"></i>Watch on YouTube</a>
 				</div>
